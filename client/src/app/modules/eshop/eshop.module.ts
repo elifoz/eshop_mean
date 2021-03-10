@@ -14,6 +14,7 @@ import { PipeModule } from '../../pipes/pipe.module';
 import { ContactComponent } from './contact/contact.component';
 import { PageComponent } from './page/page.component';
 import { EnvConfigurationService } from '../../services/env-configuration.service';
+import { LiveComponent } from './live/live.component';
 
 export function RecaptchFactory(config: EnvConfigurationService): string {
   return config && config.config ? config.config['FE_RECAPTCHA_CLIENT_KEY'] : '';
@@ -22,7 +23,8 @@ export function RecaptchFactory(config: EnvConfigurationService): string {
 @NgModule({
   declarations: [
     ContactComponent,
-    PageComponent
+    PageComponent,
+    LiveComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,7 @@ export function RecaptchFactory(config: EnvConfigurationService): string {
     RouterModule.forChild([
       { path: 'contact', component: ContactComponent },
       { path: ':titleUrl', component: PageComponent },
+      {path: ':live', component: LiveComponent }
     ]),
   ],
   providers: [
